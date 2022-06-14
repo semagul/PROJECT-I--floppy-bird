@@ -2,8 +2,8 @@ class Game {
   constructor() {
     this.background = new Background();
     this.bird = new Bird();
+    // delete pipes here x < 0 - width of image
     this.obstacles = [];
-
     this.obstacleImages = [];
     this.backgroundImages = [];
     this.birdImage;
@@ -15,10 +15,11 @@ class Game {
       { src: loadImage("assets/background.jpg")},
       { src: loadImage("assets/ground.png")}
   ]
-    this.obstacleImages = [
-      { src: loadImage('assets/pipe.png')},
-      { src: loadImage('assets/pipedown.png')}
-    ]
+    this.obstacleImages = {
+    lower: loadImage('assets/pipe.png'),
+    upper: loadImage('assets/pipedown.png')
+  };
+    
     this.birdImage = loadImage('assets/bird.png')
   }
 
@@ -26,15 +27,18 @@ class Game {
     this.bird.draw();
     this.background.draw();
 
-
-    if (frameCount % 150 === 0) {
+    if (frameCount % 250 === 0) {
       // this.rand = Math.floor(random(150, 400));
-			this.obstacles.push(new Obstacles(this.obstacleImages[0].src))
-      
+      let lower = new LowerObstacle(this.obstacleImages.lower);
+      let upper = new UpperObstacle(this.obstacleImages.upper, lower);
+			this.obstacles.push(lower);
+      this.obstacles.push(upper);
     }
 
-	  this.obstacles.forEach(function(obstacles) {
-        obstacles.draw()
+	  this.obstacles.forEach(obstacles => {
+      obstacles.update();  
+      obstacles.draw();
+
     })
   }
 }
