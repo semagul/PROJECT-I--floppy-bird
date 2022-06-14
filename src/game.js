@@ -7,6 +7,7 @@ class Game {
     this.obstacleImages = [];
     this.backgroundImages = [];
     this.birdImage;
+    // this.rand = 100;
   }
 
   preload() {
@@ -26,9 +27,12 @@ class Game {
     this.background.draw();
 
 
-    if (frameCount % 50 === 0) {
+    if (frameCount % 150 === 0) {
+      // this.rand = Math.floor(random(150, 400));
 			this.obstacles.push(new Obstacles(this.obstacleImages[0].src))
+      
     }
+
 	  this.obstacles.forEach(function(obstacles) {
         obstacles.draw()
     })

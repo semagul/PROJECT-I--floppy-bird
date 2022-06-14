@@ -2,7 +2,7 @@ class Background {
     constructor() {
     this.x1 = 0;
     this.x2 = WIDTH;
-    this.scrollSpeed = 2;
+    this.scrollSpeed = 0.5;
 }
     draw() {
         image(game.backgroundImages[0].src, this.x1, 0, WIDTH, HEIGHT);
