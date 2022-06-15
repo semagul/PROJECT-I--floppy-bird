@@ -14,31 +14,32 @@ class Game {
     this.backgroundImages = [
       { src: loadImage("assets/background.jpg")},
       { src: loadImage("assets/ground.png")}
-  ]
+  ];
     this.obstacleImages = {
     lower: loadImage('assets/pipe.png'),
     upper: loadImage('assets/pipedown.png')
   };
     
     this.birdImage = loadImage('assets/bird.png')
-  }
+  };
 
   draw() {
-    this.bird.draw();
-    this.background.draw();
 
+    this.background.draw();
+  
     if (frameCount % 250 === 0) {
       // this.rand = Math.floor(random(150, 400));
       let lower = new LowerObstacle(this.obstacleImages.lower);
       let upper = new UpperObstacle(this.obstacleImages.upper, lower);
 			this.obstacles.push(lower);
       this.obstacles.push(upper);
-    }
+    };
 
 	  this.obstacles.forEach(obstacles => {
       obstacles.update();  
       obstacles.draw();
+    });
 
-    })
+    this.bird.draw();
   }
 }

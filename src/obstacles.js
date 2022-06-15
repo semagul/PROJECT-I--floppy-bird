@@ -11,8 +11,6 @@ class LowerObstacle {
 
     draw() {
         image(this.img, this.x, this.y, this.width, this.height)
-
-
     }
 //delete the  pipes 
     update () {
