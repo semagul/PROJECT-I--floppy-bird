@@ -7,7 +7,6 @@ class Bird extends RectangularImage {
 		// this.height = 50;        
         this.velocity = 0;
         this.gravity = 0.2;
-        this.endGame = false; 
     };
 
     draw() {
@@ -20,12 +19,11 @@ class Bird extends RectangularImage {
             alert("You died!");
             location.reload();
 		};
+        
         image(this.img, this.x, this.y, this.width, this.height);
-
     };
 
     fly() {
-        console.log('fly');
         this.velocity = - 5
     };
 }

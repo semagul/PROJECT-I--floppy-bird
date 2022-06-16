@@ -6,7 +6,6 @@ class Game {
     this.obstacleImages = [];
     this.backgroundImages = [];
     this.birdImage;
-    // this.rand = 100;
   };
 
 
@@ -27,10 +26,7 @@ class Game {
 
   draw() {		
     this.background.draw();
-    if (frameCount % 180 === 0) {
-      console.log(frameCount);
-      console.log(frameCount % 250);
-      // this.rand = Math.floor(random(150, 400));
+    if (frameCount % 250 === 0) {
       let lower = new LowerObstacle(this.obstacleImages.lower);
       let upper = new UpperObstacle(this.obstacleImages.upper, lower);
 			this.obstacle.push(lower);
@@ -40,15 +36,10 @@ class Game {
 	  this.obstacle.forEach(obstacle => {
       obstacle.update();  
       obstacle.draw();
+      obstacle.collision(this.bird);
     });
 
     this.bird.draw();
-
-    // for (let i = 0; i < this.obstacle.length; i++) {
-    //   if (this.bird.doesOverlap(this.obstacle[i]) === false) {
-    //       console.log("you died BIETCH!")
-    //   };
-    // };
 
 		this.obstacle = this.obstacle.filter((obstacle) => {
 			if (obstacle.x < 0 - OBSTACLE_WIDTH) {
@@ -56,6 +47,9 @@ class Game {
 			} else {
 				return true
 			};
+
+      
 		});
   };
+
 }
