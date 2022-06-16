@@ -5,10 +5,14 @@ class Background {
     this.scrollSpeed = 0.5;
 }
     draw() {
-        image(game.backgroundImages[0].src, this.x1, 0, WIDTH, HEIGHT);
-        image(game.backgroundImages[0].src, this.x2, 0, WIDTH, HEIGHT);
-        image(game.backgroundImages[1].src, 0, (HEIGHT - GROUNDHEIGHT), WIDTH, GROUNDHEIGHT);  
-    
+        // image(game.backgroundImages[0].src, this.x1, 0, WIDTH, HEIGHT);
+        // image(game.backgroundImages[0].src, this.x2, 0, WIDTH, HEIGHT);
+        // image(game.backgroundImages[1].src, 0, (HEIGHT - GROUNDHEIGHT), WIDTH, GROUNDHEIGHT);  
+
+        image(game.backgroundImages[0].src, 0, 0, WIDTH, HEIGHT);
+        image(game.backgroundImages[1].src, this.x1, (HEIGHT - GROUNDHEIGHT), WIDTH, GROUNDHEIGHT);  
+        image(game.backgroundImages[1].src, this.x2, (HEIGHT - GROUNDHEIGHT), WIDTH, GROUNDHEIGHT);   
+
         this.x1 -= this.scrollSpeed;
         this.x2 -= this.scrollSpeed;
     

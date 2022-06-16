@@ -1,29 +1,31 @@
-class Bird {
+class Bird extends RectangularImage {
     constructor() {
-        this.x = HEIGHT/2;
-		this.y = HEIGHT/2;
-		this.width = 60;
-		this.height = 50;        
-        this.gravitySpeed = 0;
-        this.gravity = 0.01 ;
-        this.speedX = 0;
-        this.speedY = 0;
+        super (HEIGHT/2, HEIGHT/2, 60, 50, game.birdImage)
+        // this.x = HEIGHT/2;
+		// this.y = HEIGHT/2;
+		// this.width = 60;
+		// this.height = 50;        
+        this.velocity = 0;
+        this.gravity = 0.2;
+        this.endGame = false; 
     };
 
     draw() {
-        // this.velocity += 1;
-        this.gravitySpeed += this.gravity;
-        this.x += this.speedX;
-        this.y += this.speedY + this.gravitySpeed;
-        // if (this.y >= height - this.height) {
-		// 	// reset him to the starting position
-		// 	this.y = height - this.height
-		// }
-        image(game.birdImage, this.x, this.y, this.width, this.height) 
+		this.velocity += this.gravity;
+		this.y += this.velocity;
+
+
+		if ((this.y >= HEIGHT || this.y < 0 - this.height) && !this.endGame) {
+            this.endGame = true;
+            alert("You died!");
+            location.reload();
+		};
+        image(this.img, this.x, this.y, this.width, this.height);
+
     };
 
     fly() {
         console.log('fly');
-        this.y -=  30;
+        this.velocity = - 5
     };
 }

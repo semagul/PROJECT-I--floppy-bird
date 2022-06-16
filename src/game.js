@@ -1,14 +1,14 @@
 class Game {
   constructor() {
     this.background = new Background();
-    this.bird = new Bird();
-    // delete pipes here x < 0 - width of image
-    this.obstacles = [];
+    this.bird;
+    this.obstacle = [];
     this.obstacleImages = [];
     this.backgroundImages = [];
     this.birdImage;
     // this.rand = 100;
-  }
+  };
+
 
   preload() {
     this.backgroundImages = [
@@ -21,25 +21,41 @@ class Game {
   };
     
     this.birdImage = loadImage('assets/bird.png')
+    this.bird = new Bird();
   };
 
-  draw() {
 
+  draw() {		
     this.background.draw();
-  
-    if (frameCount % 250 === 0) {
+    if (frameCount % 180 === 0) {
+      console.log(frameCount);
+      console.log(frameCount % 250);
       // this.rand = Math.floor(random(150, 400));
       let lower = new LowerObstacle(this.obstacleImages.lower);
       let upper = new UpperObstacle(this.obstacleImages.upper, lower);
-			this.obstacles.push(lower);
-      this.obstacles.push(upper);
+			this.obstacle.push(lower);
+      this.obstacle.push(upper);
     };
 
-	  this.obstacles.forEach(obstacles => {
-      obstacles.update();  
-      obstacles.draw();
+	  this.obstacle.forEach(obstacle => {
+      obstacle.update();  
+      obstacle.draw();
     });
 
     this.bird.draw();
-  }
+
+    // for (let i = 0; i < this.obstacle.length; i++) {
+    //   if (this.bird.doesOverlap(this.obstacle[i]) === false) {
+    //       console.log("you died BIETCH!")
+    //   };
+    // };
+
+		this.obstacle = this.obstacle.filter((obstacle) => {
+			if (obstacle.x < 0 - OBSTACLE_WIDTH) {
+				return false
+			} else {
+				return true
+			};
+		});
+  };
 }
