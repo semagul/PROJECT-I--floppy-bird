@@ -13,16 +13,17 @@ class Game {
 
   preload() {
     this.backgroundImages = [
-      { src: loadImage("assets/background2.png")},
-      { src: loadImage("assets/ground2.png")}
+      { src: loadImage("assets/background.png")},
+      { src: loadImage("assets/ground.png")}
   ];
     this.obstacleImages = {
-    lower: loadImage('assets/pipe-green.png'),
-    upper: loadImage('assets/pipe-green-down.png')
+    lower: loadImage("assets/pipe-green.png"),
+    upper: loadImage("assets/pipe-green-down.png")
   };
     
     this.birdImage = loadImage('assets/bird.gif');
     this.bird = new Bird();
+
   };
 
 
@@ -56,8 +57,9 @@ class Game {
 			};
 		});
 
-    textSize(50);	
-    text(`${this.counter}`, 300, 100);
+
+    textFont("Courier New ", 70);	
+    text(`${this.counter}`, 280, 100);
   };
 
 }

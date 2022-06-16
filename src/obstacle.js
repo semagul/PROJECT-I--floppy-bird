@@ -17,23 +17,20 @@ class LowerObstacle extends RectangularImage {
         if (bird.x < (this.x + this.width) && 
             // bird.x + 50 > this.x && 
             // bird.y + bird.height - 10 > this.y &&
-            bird.x + (bird.width - 20) > this.x && 
-            bird.y + (bird.height - 10) > this.y &&
+            bird.x + bird.width - 5 >= this.x && 
+            bird.y + bird.height >= this.y &&
             !this.endGame) {
                 this.endGame = true;
                 alert("You died!");
                 location.reload();
         };
-    
     };
-
-
-}
+};
 
 
 class UpperObstacle extends RectangularImage {
     constructor(img, lower) {
-        super(lower.x, lower.y - 150 - lower.height, OBSTACLE_WIDTH, lower.height, img);
+        super(lower.x, lower.y - 140 - lower.height, OBSTACLE_WIDTH, lower.height, img);
         this.endGame = false;
     };
 
@@ -47,8 +44,8 @@ class UpperObstacle extends RectangularImage {
 
     collision(bird) {
         if (bird.x < (this.x + this.width) && 
-            bird.y + 15 < (this.y + this.height) && 
-            bird.x + (bird.width - 20) > this.x &&
+            bird.y <= this.y + this.height && 
+            bird.x + bird.width - 5 >= this.x &&
             !this.endGame) {
                 this.endGame = true;
                 alert("You died!");
