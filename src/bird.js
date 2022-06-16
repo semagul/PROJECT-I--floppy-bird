@@ -1,20 +1,19 @@
 class Bird extends RectangularImage {
     constructor() {
-        super (HEIGHT/2, HEIGHT/2, 60, 50, game.birdImage)
-        // this.x = HEIGHT/2;
-		// this.y = HEIGHT/2;
-		// this.width = 60;
-		// this.height = 50;        
+        super (HEIGHT/2 - 30, HEIGHT/2 - 25, 60, 50, game.birdImage)    
         this.velocity = 0;
         this.gravity = 0.2;
+        this.gameStarted = false;
+
     };
 
     draw() {
+        if (this.gameStarted) {
 		this.velocity += this.gravity;
 		this.y += this.velocity;
+        };
 
-
-		if ((this.y >= HEIGHT || this.y < 0 - this.height) && !this.endGame) {
+		if ((this.y >= HEIGHT + this.height || this.y < 0 - this.height) && !this.endGame) {
             this.endGame = true;
             alert("You died!");
             location.reload();

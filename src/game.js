@@ -6,6 +6,8 @@ class Game {
     this.obstacleImages = [];
     this.backgroundImages = [];
     this.birdImage;
+    this.gameStarted = false;
+    this.counter = 0;
   };
 
 
@@ -26,11 +28,13 @@ class Game {
 
   draw() {		
     this.background.draw();
-    if (frameCount % 250 === 0) {
+    if (frameCount % 250 === 0 && this.gameStarted) {
       let lower = new LowerObstacle(this.obstacleImages.lower);
       let upper = new UpperObstacle(this.obstacleImages.upper, lower);
 			this.obstacle.push(lower);
       this.obstacle.push(upper);
+      console.log(this.counter++);
+      
     };
 
 	  this.obstacle.forEach(obstacle => {

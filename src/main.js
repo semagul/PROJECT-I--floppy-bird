@@ -14,6 +14,8 @@ function draw() {
 
 function keyPressed() {
   if (keyCode == 32) {
+    game.gameStarted = true;
+    game.bird.gameStarted = true;
     game.bird.fly();
   }
 }
