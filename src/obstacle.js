@@ -6,6 +6,7 @@ class LowerObstacle extends RectangularImage {
 
     draw() {
         image(this.img, this.x, this.y, this.width, this.height);
+     
     };
 
     update () {
@@ -14,8 +15,10 @@ class LowerObstacle extends RectangularImage {
 
     collision(bird) {
         if (bird.x < (this.x + this.width) && 
-            bird.x + 50 > this.x && 
-            bird.y + bird.height - 10 > this.y &&
+            // bird.x + 50 > this.x && 
+            // bird.y + bird.height - 10 > this.y &&
+            bird.x + (bird.width - 20) > this.x && 
+            bird.y + (bird.height - 10) > this.y &&
             !this.endGame) {
                 this.endGame = true;
                 alert("You died!");
@@ -30,7 +33,7 @@ class LowerObstacle extends RectangularImage {
 
 class UpperObstacle extends RectangularImage {
     constructor(img, lower) {
-        super(lower.x, lower.y - 200 - img.height, OBSTACLE_WIDTH, lower.height, img);
+        super(lower.x, lower.y - 150 - lower.height, OBSTACLE_WIDTH, lower.height, img);
         this.endGame = false;
     };
 
@@ -44,8 +47,8 @@ class UpperObstacle extends RectangularImage {
 
     collision(bird) {
         if (bird.x < (this.x + this.width) && 
-            bird.y + 10 < (this.y + this.height) && 
-            bird.x + 50 > this.x &&
+            bird.y + 15 < (this.y + this.height) && 
+            bird.x + (bird.width - 20) > this.x &&
             !this.endGame) {
                 this.endGame = true;
                 alert("You died!");

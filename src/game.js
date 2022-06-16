@@ -13,28 +13,31 @@ class Game {
 
   preload() {
     this.backgroundImages = [
-      { src: loadImage("assets/background.jpg")},
-      { src: loadImage("assets/ground.png")}
+      { src: loadImage("assets/background2.png")},
+      { src: loadImage("assets/ground2.png")}
   ];
     this.obstacleImages = {
-    lower: loadImage('assets/pipe.png'),
-    upper: loadImage('assets/pipedown.png')
+    lower: loadImage('assets/pipe-green.png'),
+    upper: loadImage('assets/pipe-green-down.png')
   };
     
-    this.birdImage = loadImage('assets/bird.png')
+    this.birdImage = loadImage('assets/bird.gif');
     this.bird = new Bird();
   };
 
 
-  draw() {		
+  draw() {	
     this.background.draw();
     if (frameCount % 250 === 0 && this.gameStarted) {
       let lower = new LowerObstacle(this.obstacleImages.lower);
       let upper = new UpperObstacle(this.obstacleImages.upper, lower);
 			this.obstacle.push(lower);
       this.obstacle.push(upper);
-      console.log(this.counter++);
-      
+
+    };
+
+    if (frameCount % 60 === 0 && this.gameStarted) {
+        this.counter++;
     };
 
 	  this.obstacle.forEach(obstacle => {
@@ -51,9 +54,10 @@ class Game {
 			} else {
 				return true
 			};
-
-      
 		});
+
+    textSize(50);	
+    text(`${this.counter}`, 300, 100);
   };
 
 }
