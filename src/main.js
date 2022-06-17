@@ -1,9 +1,7 @@
 const game = new Game();
 
-let audio;
 function preload() {
   game.preload(); 
-  audio = loadSound("assets/music/Fluffing-a-Duck.mp3"); 
 };
 
 function setup() {
@@ -20,7 +18,9 @@ function keyPressed() {
     game.gameStarted = true;
     game.bird.gameStarted = true;
     game.bird.fly();
-    audio.play();
   };
+
 };
+
+
  
