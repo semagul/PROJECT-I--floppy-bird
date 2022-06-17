@@ -20,9 +20,12 @@ class LowerObstacle extends RectangularImage {
             bird.x + bird.width - 5 >= this.x && 
             bird.y + bird.height >= this.y &&
             !this.endGame) {
+                
                 this.endGame = true;
                 alert("You died!");
+                
                 location.reload();
+                main.audio.stop();
         };
     };
 };
@@ -47,9 +50,11 @@ class UpperObstacle extends RectangularImage {
             bird.y <= this.y + this.height && 
             bird.x + bird.width - 5 >= this.x &&
             !this.endGame) {
+                
                 this.endGame = true;
                 alert("You died!");
                 location.reload(); 
+                main.audio.stop();
         };
 }
 }

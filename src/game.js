@@ -8,6 +8,7 @@ class Game {
     this.birdImage;
     this.gameStarted = false;
     this.counter = 0;
+
   };
 
 
@@ -21,7 +22,7 @@ class Game {
     upper: loadImage("assets/pipe-green-down.png")
   };
     
-    this.birdImage = loadImage('assets/bird.gif');
+    this.birdImage = loadImage("assets/bird.gif");
     this.bird = new Bird();
 
   };
@@ -29,6 +30,7 @@ class Game {
 
   draw() {	
     this.background.draw();
+
     if (frameCount % 250 === 0 && this.gameStarted) {
       let lower = new LowerObstacle(this.obstacleImages.lower);
       let upper = new UpperObstacle(this.obstacleImages.upper, lower);

@@ -1,13 +1,15 @@
 const game = new Game();
 
+let audio;
 function preload() {
-  game.preload();  
+  game.preload(); 
+  audio = loadSound("assets/music/Fluffing-a-Duck.mp3"); 
 };
 
 function setup() {
   createCanvas(WIDTH, HEIGHT); 
   frameRate(60);
-
+  audio.play();
 };
 
 function draw() {
