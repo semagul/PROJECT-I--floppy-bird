@@ -9,7 +9,6 @@ function preload() {
 function setup() {
   createCanvas(WIDTH, HEIGHT); 
   frameRate(60);
-  audio.play();
 };
 
 function draw() {
@@ -21,6 +20,7 @@ function keyPressed() {
     game.gameStarted = true;
     game.bird.gameStarted = true;
     game.bird.fly();
+    audio.play();
   };
 };
  
