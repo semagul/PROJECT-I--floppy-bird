@@ -18,8 +18,8 @@ function keyPressed() {
     game.gameStarted = true;
     game.bird.gameStarted = true;
     game.bird.fly();
-  };
 
+  };
 };
 
 
