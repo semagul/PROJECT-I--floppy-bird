@@ -13,15 +13,14 @@ class Bird extends RectangularImage {
 		this.y += this.velocity;
         };
 
-		// if ((this.y >= HEIGHT + this.height || this.y < 0 - this.height) && !this.endGame) {
-            if ((this.y >= 600 + this.height) && !this.endGame) {
-            this.endGame = true;
-            alert("You died!");
-            location.reload();
+		
+        if ((this.y >= 600 + this.height) && !this.endGame) {
+        this.endGame = true;
+        alert("You died!");
+        location.reload();
 		};
         
         image(this.img, this.x, this.y, this.width, this.height);
-        //rect(this.x, this.y, this.width, this.height);
     };
 
     fly() {

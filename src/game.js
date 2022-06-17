@@ -60,7 +60,7 @@ class Game {
 		});
 
 
-    textFont("Courier New ", 70);	
+    textFont("Courier New", 70);	
     text(`${this.counter}`, 280, 100);
   };
 
