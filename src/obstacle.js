@@ -1,6 +1,6 @@
 class LowerObstacle extends RectangularImage {
-    constructor(img) {
-        super (WIDTH, random(OBSTACLE_MIN_HEIGHT, OBSTACLE_MAX_HEIGHT), OBSTACLE_WIDTH, HEIGHT, img);
+    constructor(img, audiofile) {
+        super (WIDTH, random(OBSTACLE_MIN_HEIGHT, OBSTACLE_MAX_HEIGHT), OBSTACLE_WIDTH, HEIGHT, img, audiofile);
         this.endGame = false; 
     };
 
@@ -20,20 +20,15 @@ class LowerObstacle extends RectangularImage {
             bird.x + bird.width - 5 >= this.x && 
             bird.y + bird.height >= this.y &&
             !this.endGame) {
-                
-                this.endGame = true;
-                alert("You died!");
-                
-                location.reload();
-                main.audio.stop();
+                super.endGame();
         };
     };
 };
 
 
 class UpperObstacle extends RectangularImage {
-    constructor(img, lower) {
-        super(lower.x, lower.y - 140 - lower.height, OBSTACLE_WIDTH, lower.height, img);
+    constructor(img, lower, audiofile) {
+        super(lower.x, lower.y - 140 - lower.height, OBSTACLE_WIDTH, lower.height, img, audiofile);
         this.endGame = false;
     };
 
@@ -50,11 +45,11 @@ class UpperObstacle extends RectangularImage {
             bird.y <= this.y + this.height && 
             bird.x + bird.width - 5 >= this.x &&
             !this.endGame) {
-                
-                this.endGame = true;
-                alert("You died!");
-                location.reload(); 
-                main.audio.stop();
+// BELOW IS VERY VERY IMPORTANT
+// You make ref to the class that upper var has been inherited from
+ 
+            super.endGame();
+
         };
 }
 }

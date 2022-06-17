@@ -8,10 +8,11 @@ class Game {
     this.birdImage;
     this.gameStarted = false;
     this.counter = 0;
+    this.audio;
 
   };
 
-
+ 
   preload() {
     this.backgroundImages = [
       { src: loadImage("assets/background.png")},
@@ -21,9 +22,10 @@ class Game {
     lower: loadImage("assets/pipe-green.png"),
     upper: loadImage("assets/pipe-green-down.png")
   };
-    
+
     this.birdImage = loadImage("assets/bird.gif");
-    this.bird = new Bird();
+    this.audio = loadSound("assets/Fluffing-a-Duck.mp3");
+    this.bird = new Bird(this.audio); 
 
   };
 
@@ -32,8 +34,8 @@ class Game {
     this.background.draw();
 
     if (frameCount % 250 === 0 && this.gameStarted) {
-      let lower = new LowerObstacle(this.obstacleImages.lower);
-      let upper = new UpperObstacle(this.obstacleImages.upper, lower);
+      let lower = new LowerObstacle(this.obstacleImages.lower, this.audio);
+      let upper = new UpperObstacle(this.obstacleImages.upper, lower, this.audio);
 			this.obstacle.push(lower);
       this.obstacle.push(upper);
 
@@ -62,6 +64,8 @@ class Game {
 
     textFont("Courier New", 70);	
     text(`${this.counter}`, 280, 100);
+
+
   };
 
 }
