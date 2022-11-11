@@ -12,7 +12,6 @@ function setup() {
 function draw() {
   game.draw();  
   if (game.bird.endGame === true) { 
-    // || game.lower.endGame === true || game.upper.endGame === true) {
     game.audio.stop();
   }
 };
@@ -37,8 +36,6 @@ function keyPressed() {
     game.bird.fly();
 
   };
-
-
 };
 
 
